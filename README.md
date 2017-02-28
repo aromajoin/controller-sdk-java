@@ -19,15 +19,20 @@
 * Aroma Shooter 1 USB RS-485 versions 
 
 ---
+
 ## Prerequisites
 * JRE version:
   * 1.5+
 * [Java Serial](https://github.com/NeuronRobotics/nrjavaserial) 
+
 ---
+
 ## Installation  
+
 * Please [download the .zip file](https://github.com/aromajoin/controller-sdk-java/releases/).
-* Extract it and go to /lib/*.jar.
+* Extract it and go to /lib/*.jar
 * Add JAR files to your build path
+
 ---
 
 ## Usage  
