@@ -16,27 +16,54 @@
 ---
 
 ## Supported devices
-* Aroma Shooter 1 USB RS-485 versions 
+* Aroma Shooter 1 USB RS-485 versions.
 
 ---
 
 ## Prerequisites
 * JRE version:
   * 1.5+
-* [Java Serial](https://github.com/NeuronRobotics/nrjavaserial) 
+* [Java Serial](https://github.com/NeuronRobotics/nrjavaserial)
 
 ---
 
 ## Installation  
 
 * Please [download the .zip file](https://github.com/aromajoin/controller-sdk-java/releases/).
-* Extract it and go to /lib/*.jar
-* Add JAR files to your build path
+* Extract it and go to /lib/*.
+* Add JAR files to your build path.
 
 ---
 
 ## Usage  
 
+*Firstly, imports java library*
+```Java
+import com.aromajoin.www.aromashooter.*;
+```
+### Setup and connect devices
+
+```Java
+String portName = "/dev/ttyUSB0";
+AromaShooter as = new AromaShooter(portName);
+```
+### Diffuse scents 
+
+Using *Diffuse APIs*  :
+```Java
+// 香りを噴射します
+int durationMilliSec = 3000;// 噴射期間(ミリ秒)
+double density = 0.6;// 香りの濃度(0～1.0)
+// 噴射速度は、BLOWING_SPEED_MINまたはBLOWING_SPEED_MAXの2段階で調節可能です．
+double speed = AromaShooter.BLOWING_SPEED_MIN;
+int ports[] = { 1, 2 };// 1、2番ポートから香りを噴射
+// 指定した条件で香りを噴射します
+as.blow("", durationMilliSec, density, speed, ports);
+
+``` 
+
+**For more information, please checkout this repository and refer to the [sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/AromaShooterControllerSample).**  
+**If you get any issues or require any new features, please create a [new issue](https://github.com/aromajoin/controller-sdk-java/issues).**
 
 ---
 ## License  
