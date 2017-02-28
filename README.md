@@ -17,6 +17,12 @@
 * Aroma Shooter USB and RS-485 versions 
 
 ---
+## Dependency  
+
+---
+
+## Usage  
+
 
 ---
 ## License  
