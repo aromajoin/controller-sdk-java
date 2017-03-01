@@ -30,7 +30,7 @@ public class Main {
             return;
         }
 
-        	// アロマシュータークラスのインスタンスを生成します
+        // アロマシュータークラスのインスタンスを生成します
         AromaShooter as = new AromaShooter(portName);
         System.out.println(as.toString());
 
