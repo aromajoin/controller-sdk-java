@@ -1,7 +1,7 @@
 /**
  * 
  */
-package aromashootercontrollertest;
+package com.aromajoin.controllersdksample;
 
 import com.aromajoin.www.aromashooter.*;
 
