@@ -3,6 +3,9 @@
  */
 package com.aromajoin.controllersdksample;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import com.aromajoin.www.aromashooter.*;
 
 /**
@@ -21,15 +24,24 @@ public class MainSample {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testUSBDevice();
+		// Discover available ports which were connected to Aroma Shooter USB device
+		Set<String> availableAromaShooterUSBs = AromaShooter.discoverConnectedAromaShooterUSB();
+		Iterator<String> iterator = availableAromaShooterUSBs.iterator();
+		
+		// Iterate on valid ports
+		while(iterator.hasNext()){
+			// Perform a test diffuse for each port.
+			String usbPort = iterator.next();
+			testUSBDevice(usbPort);
+		}
 	}
 	
     /**
      * Test to control Aroma Shooter with USB protocol communication
      */
-	private static void testUSBDevice(){
-		// Specify the serial port to which the aroma shooter is connected (ex: COM 3).
-        String portName = "/dev/ttyUSB0";
+	private static void testUSBDevice(String portName){
+		// Specify the serial port to which the aroma shooter is connected (ex: COM3 on Windows or ttyUSB on Mac/Linux).
+		// String portName = "/dev/ttyUSB1";
 
         // Confirm whether the device connected to the specified serial port is the Aroma shooter USB.
         if (AromaShooter.isAromaShooter("", portName)) {
@@ -45,20 +57,20 @@ public class MainSample {
 
         // Inject scent process
         // Injection period (ms)
-        int durationMilliSec = 3000;
+        int durationMilliSec = 1000;
 
         // Scent concentration (between 0 ~ 1)
-        double density = 0.6;
+        double density = 1;
 
         // The injection speed can be adjusted in two values: BLOWING_SPEED_MIN or BLOWING_SPEED_MAX.
         double speed = AromaShooter.BLOWING_SPEED_MIN;
 
         // Array of ports [1,2] want to inject scent that defined by port number in the aroma shooter 
-        int ports[] = { 1, 2 };
+        int ports[] = { 1 };
 
         // Inject the scent under specified conditions.
         // For USB protocol, productId is not required.
-        as.blow("", durationMilliSec, density, speed, ports);
+        as.blow("", durationMilliSec, speed, ports);
 
         /*
          * The blow method returns without waiting for the injection to complete.
