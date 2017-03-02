@@ -16,14 +16,14 @@
 ---
 
 ## Supported devices
-* Aroma Shooter 1 USB RS-485 versions.
+* Aroma Shooter USB version
+* Aroma Shooter RS485 version
 
 ---
 
 ## Prerequisites
-* JRE version:
-  * 1.5+
-* [Java Serial](https://github.com/NeuronRobotics/nrjavaserial)
+* JRE version: >= 1.5+
+* [Device driver installation](http://www.ftdichip.com/Drivers/VCP.html)
 
 ---
 
@@ -44,7 +44,12 @@ import com.aromajoin.www.aromashooter.*;
 ### Setup and connect devices
 
 ```Java
-String portName = "/dev/ttyUSB0";
+//Declare the port name that Aroma Shooter is connected
+//For Windows: portName = "COMx"
+//For Linux: portName = "/dev/ttyUSBx"
+//For Mac: portName = "/dev/tty.usbserial-xxx"
+String portName = "yourPortName";
+
 AromaShooter as = new AromaShooter(portName);
 ```
 ### Diffuse scents 
