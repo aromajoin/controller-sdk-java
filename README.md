@@ -44,14 +44,19 @@ import com.aromajoin.www.aromashooter.*;
 ### Setup and connect devices
 
 ```Java
-//Declare the port name that Aroma Shooter is connected
-//For Windows: portName = "COMx"
-//For Linux: portName = "/dev/ttyUSBx"
-//For Mac: portName = "/dev/tty.usbserial-xxx"
+// Declare the port name that Aroma Shooter is connected
+// For Windows: portName = "COMx"
+// For Linux: portName = "/dev/ttyUSBx"
+// For Mac: portName = "/dev/tty.usbserial-xxx"
 String portName = "yourPortName";
 
-//Initialize an AromaShooter instance
+// Initialize an USB Aroma Shooter instance
 AromaShooter as = new AromaShooter(portName);
+
+// Initialize an RS-485 Aroma Shooter instance
+String productId = "ASN1RA0001";
+AromaShooter as = new AromaShooter(productId, portName);
+
 ```
 ### Diffuse scents 
 
@@ -62,19 +67,19 @@ Using *Diffuse APIs*  :
  * @param durationMilliSec: duration in milliseconds
  * @param density: 0.0 - 1.0
  * @param speed: 0 or 1, recommended value: 1 or AromaShooter.BLOWING_SPEED_MAX
- * @param ports: Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3.
+ * @param ports: Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
  */
 as.blow(durrationMilliSec, density, speed, ports)  
 
 /**
  * For RS485-version device
- * @param deviceSerial: Ex: "ASN1RA0001"
+ * @param productId: Ex: "ASN1RA0001"
  * @param durationMilliSec: duration in milliseconds
  * @param density: 0.0 - 1.0
  * @param speed: 0 or 1, recommended value: 1 or AromaShooter.BLOWING_SPEED_MAX
- * @param ports: Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3.
+ * @param ports: Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
  */
-as.blow(deviceSerial, durationMilliSec, density, speed, ports)
+as.blow(productId, durationMilliSec, density, speed, ports)
 
 ``` 
 
