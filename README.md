@@ -50,22 +50,31 @@ import com.aromajoin.www.aromashooter.*;
 //For Mac: portName = "/dev/tty.usbserial-xxx"
 String portName = "yourPortName";
 
+//Initialize an AromaShooter instance
 AromaShooter as = new AromaShooter(portName);
 ```
 ### Diffuse scents 
 
 Using *Diffuse APIs*  :
 ```Java
-// Set inject scent duration (ms)
-int durationMilliSec = 3000;
-// Scent concentration (between 0 ~ 1)
-double density = 0.6;
-// The injection speed can be adjusted in two values: BLOWING_SPEED_MIN or BLOWING_SPEED_MAX.
-double speed = AromaShooter.BLOWING_SPEED_MIN;
-// Array of ports [1,2]
-int ports[] = { 1, 2 };
-// Inject the scent under specified conditions above.
-as.blow("", durationMilliSec, density, speed, ports);
+/**
+ * For USB-version device
+ * @param durationMilliSec: duration in milliseconds
+ * @param density: 0.0 - 1.0
+ * @param speed: 0 or 1, recommended value: 1 or AromaShooter.BLOWING_SPEED_MAX
+ * @param ports: Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3.
+ */
+as.blow(durrationMilliSec, density, speed, ports)  
+
+/**
+ * For RS485-version device
+ * @param deviceSerial: Ex: "ASN1RA0001"
+ * @param durationMilliSec: duration in milliseconds
+ * @param density: 0.0 - 1.0
+ * @param speed: 0 or 1, recommended value: 1 or AromaShooter.BLOWING_SPEED_MAX
+ * @param ports: Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3.
+ */
+as.blow(deviceSerial, durationMilliSec, density, speed, ports)
 
 ``` 
 
