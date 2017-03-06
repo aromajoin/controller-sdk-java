@@ -24,15 +24,27 @@ public class MainSample {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Discover available ports which were connected to Aroma Shooter USB device
-		Set<String> availableAromaShooterUSBs = AromaShooter.discoverConnectedAromaShooterUSB();
-		Iterator<String> iterator = availableAromaShooterUSBs.iterator();
+		// Discover available ports which were connected to Aroma Shooter USB devices
+//		Set<String> availableAromaShooterUSBs = AromaShooter.discoverConnectedAromaShooterUSB();
+//		Iterator<String> iterator = availableAromaShooterUSBs.iterator();
+		// Iterate on valid ports
+//		while(iterator.hasNext()){
+//			// Perform a test diffuse for each port.
+//			String usbPort = iterator.next();
+//			testUSBDevice(usbPort);
+//		}
 		
+		// Discover available ports which were connected to Aroma Shooter RS-485 devices
+		String[] productIds = {"ASN1RA0011", "ASN1RA0018"};
+		Set<String> availableRS485AromaShooters = AromaShooter.discoverConnectedAromaShooterRS485(productIds);
+		Iterator<String> iterator = availableRS485AromaShooters.iterator();
 		// Iterate on valid ports
 		while(iterator.hasNext()){
 			// Perform a test diffuse for each port.
-			String usbPort = iterator.next();
-			testUSBDevice(usbPort);
+			String rs485PortName = iterator.next();
+			for(String productId: productIds){
+				testRS485Device(productId, rs485PortName);
+			}
 		}
 	}
 	
@@ -90,12 +102,12 @@ public class MainSample {
     /**
      * Test to control Aroma Shooter with RS-485 protocol communication
      */
-	private static void testRS485Device(){
+	private static void testRS485Device(String productId, String portName){
 		// Specify the serial port to which the aroma shooter is connected (ex: COM 3).
-        String portName = "/dev/ttyUSB0";
+		// String portName = "/dev/ttyUSB0";
 
         // Specify the product ID of the aroma shooter which provided in product package.
-        String productId = "ASN1RA0012";
+		//  String productId = "ASN1RA0012";
         final int BUFFER_TIME_RS458_CONNECTION = 100;
 
         // Create an instance of the Aroma shooter class for USB protocol.
@@ -124,7 +136,7 @@ public class MainSample {
         	int port4[] = { 4 }; 
             // Inject the scent under specified conditions.
             // For RS-485 protocol, productId is required.
-            as.blow(as.getId(), durationMilliSec, speed, 1, port4);
+            as.blow(productId, durationMilliSec, 1, speed, port4);
 
             // After executing the blow method, since control AS returns without waiting for the end of the injection, 
             // let the thread wait for the injection time.
@@ -138,18 +150,18 @@ public class MainSample {
             int port3[] = { 3 };
             int port6[] = { 6 };
             // Blow without aroma density
-            as.blow(as.getId(), durationMilliSec, speed, port3);
-            as.blow(as.getId(), durationMilliSec, speed, port6);
+            as.blow(productId, durationMilliSec, speed, port3);
+            as.blow(productId, durationMilliSec, speed, port6);
             Thread.sleep(durationMilliSec);
 
             // Control injection with control concentration (aroma density) is also possible
             int port1[] = { 1 }; 
-            as.blow(as.getId(), durationMilliSec, density, speed, port1);
+            as.blow(productId, durationMilliSec, density, speed, port1);
             Thread.sleep(durationMilliSec);
 
             // When control a fan please change fan fan stop / stop with changeFanState
             as.changeFanState(AromaShooter.FAN_STATE_ON);
-            Thread.sleep(durationMilliSec);
+			Thread.sleep(durationMilliSec);
             as.changeFanState(AromaShooter.FAN_STATE_OFF);
         } catch (InterruptedException e) {
             e.printStackTrace();
