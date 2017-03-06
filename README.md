@@ -83,7 +83,7 @@ as.blow(productId, durationMilliSec, density, speed, ports)
 
 ``` 
 
-**For more information, please checkout this repository and refer to the [sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/AromaShooterControllerSample).**  
+**For more information, please checkout this repository and refer to the [sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample).**  
 **If you get any issues or require any new features, please create a [new issue](https://github.com/aromajoin/controller-sdk-java/issues).**
 
 ---
