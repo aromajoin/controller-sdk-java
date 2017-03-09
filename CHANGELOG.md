@@ -3,8 +3,9 @@ Change Log
 
 Version 1.0.2 *(2017-03-06)*
 --- 
-* Fix to controlling multiple Aroma Shooter RS-485 devices that are connected to the same time.
+* Fix the issue of controlling multiple Aroma Shooter RS-485 devices at the same time.
 * Update the feature of discovering available ports for RS-485 devices.
+
 ---
 Version 1.0.1 *(2017-03-02)*
 ---
