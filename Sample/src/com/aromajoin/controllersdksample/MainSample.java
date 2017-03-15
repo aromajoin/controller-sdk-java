@@ -4,9 +4,14 @@
 package com.aromajoin.controllersdksample;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
-import com.aromajoin.www.aromashooter.*;
+import tinyb.BluetoothDevice;
+import tinyb.BluetoothGattService;
+
+import com.aromajoin.aromashooter.*;
+import com.aromajoin.aromashooter.AromaShooterBLE.AromaShooterPeripheral;
 
 /**
  * @author Hanh D TRAN
@@ -36,7 +41,7 @@ public class MainSample {
 		
 		// Discover available ports which were connected to Aroma Shooter RS-485 devices
 		String[] productIds = {"ASN1RA0011", "ASN1RA0018"};
-		Set<String> availableRS485AromaShooters = AromaShooter.discoverConnectedAromaShooterRS485(productIds);
+		Set<String> availableRS485AromaShooters = AromaShooterSerial.discoverConnectedAromaShooterRS485(productIds);
 		Iterator<String> iterator = availableRS485AromaShooters.iterator();
 		// Iterate on valid ports
 		while(iterator.hasNext()){
@@ -56,7 +61,7 @@ public class MainSample {
 		// String portName = "/dev/ttyUSB1";
 
         // Confirm whether the device connected to the specified serial port is the Aroma shooter USB.
-        if (AromaShooter.isAromaShooter("", portName)) {
+        if (AromaShooterSerial.isAromaShooter("", portName)) {
             System.out.println(portName + " The connected device is an aroma shooter．");
         } else {
             System.out.println(portName + " The connected device is not an aroma shooter．");
@@ -64,7 +69,7 @@ public class MainSample {
         }
 
         // Create an instance of the Aroma shooter class for USB protocol.
-        AromaShooter as = new AromaShooter(portName);
+        AromaShooterSerial as = new AromaShooterSerial(portName);
         System.out.println(as.toString());
 
         // Inject scent process
@@ -75,7 +80,7 @@ public class MainSample {
         double density = 1;
 
         // The injection speed can be adjusted in two values: BLOWING_SPEED_MIN or BLOWING_SPEED_MAX.
-        double speed = AromaShooter.BLOWING_SPEED_MIN;
+        double speed = AromaShooterSerial.BLOWING_SPEED_MIN;
 
         // Array of ports [1,2] want to inject scent that defined by port number in the aroma shooter 
         int ports[] = { 1 };
@@ -112,7 +117,7 @@ public class MainSample {
 
         // Create an instance of the Aroma shooter class for USB protocol.
         // Provides ProductId for communicate to RS-485 device.
-        AromaShooter as = new AromaShooter(productId, portName);
+        AromaShooterSerial as = new AromaShooterSerial(productId, portName);
 
         // It should be wait for connection time.
         try {
@@ -129,7 +134,7 @@ public class MainSample {
         double density = 0.4;
 
         // The injection speed can be adjusted in two values: BLOWING_SPEED_MIN or BLOWING_SPEED_MAX.
-        double speed = AromaShooter.BLOWING_SPEED_MAX;
+        double speed = AromaShooterSerial.BLOWING_SPEED_MAX;
 
         try {
             // Array of ports [4] want to inject scent that defined by port number in the aroma shooter 
@@ -160,14 +165,51 @@ public class MainSample {
             Thread.sleep(durationMilliSec);
 
             // When control a fan please change fan fan stop / stop with changeFanState
-            as.changeFanState(AromaShooter.FAN_STATE_ON);
+            as.changeFanState(AromaShooterSerial.FAN_STATE_ON);
 			Thread.sleep(durationMilliSec);
-            as.changeFanState(AromaShooter.FAN_STATE_OFF);
+            as.changeFanState(AromaShooterSerial.FAN_STATE_OFF);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
             as.disconnect();
         }
 	}
-
+	
+	/**
+	 * 
+	 */
+	private static void testBLEDevices() throws InterruptedException {
+		System.out.println("Scanning devices....");
+    	AromaShooterBLE aromaShooterBLE = AromaShooterBLE.getInstance();
+    	List<AromaShooterPeripheral> fileredAromaShooters = aromaShooterBLE.startScanning();
+    	System.out.println("Filtered : " + fileredAromaShooters.size());
+    	for(AromaShooterPeripheral asp : fileredAromaShooters){
+    		System.out.println(asp.toString());
+    	}
+    	
+    	System.out.println("Connecting device....");
+    	aromaShooterBLE.connectDevice("78:C5:E5:6D:EA:B1");
+    	for(AromaShooterPeripheral connectedASN : aromaShooterBLE.getConnectedDevices()){
+    		System.out.println(connectedASN.toString());
+    		aromaShooterBLE.blow(aromaShooterBLE.getConnectedDevice(connectedASN.getBleAddress()), 1000, 1, 2);
+    		
+    		// Get service from UUID
+//    		BluetoothDevice aromashooter = aromaShooterBLE.getConnectedDevice(connectedASN.getBleAddress());
+//    		BluetoothGattService asnService = aromaShooterBLE.getService(aromashooter.getAddress(), "00001802-0000-1000-8000-00805f9b34fb");
+//            if (asnService == null) {
+//                System.err.println("This device does not have the temperature service we are looking for.");
+//                aromashooter.disconnect();
+//                System.exit(-1);
+//            }
+//            System.out.println("Found service " + asnService.getUUID());
+    	}
+    	
+    	System.out.println("Disconnecting device....");
+    	aromaShooterBLE.disconnectDevice("78:C5:E5:6D:EA:B1");
+    	
+    	for(AromaShooterPeripheral connectedASN : aromaShooterBLE.getConnectedDevices()){
+    		System.out.println(connectedASN.toString());
+    	}
+    	System.out.println("Done.");
+	}
 }

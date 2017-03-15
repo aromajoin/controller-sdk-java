@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-8-openjdk-amd64"/>
 	<classpathentry kind="lib" path="lib/nrjavaserial-3.12.1.jar"/>
-	<classpathentry kind="lib" path="lib/aromashooter.jar"/>
+	<classpathentry kind="lib" path="lib/tinyb.jar"/>
+	<classpathentry kind="lib" path="lib/controller-java-sdk-1.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
