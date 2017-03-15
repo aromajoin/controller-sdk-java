@@ -1,6 +1,11 @@
 Change Log
 ===
 
+Version 1.1.0 *(2017-03-15)*
+---
+* Integrate API that work with Aroma Shooter BLE devices.
+* Fix the issue of package naming.
+---
 Version 1.0.2 *(2017-03-06)*
 --- 
 * Fix the issue of controlling multiple Aroma Shooter RS-485 devices at the same time.
