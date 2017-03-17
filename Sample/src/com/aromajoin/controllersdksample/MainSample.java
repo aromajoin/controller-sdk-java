@@ -197,11 +197,11 @@ public class MainSample {
 //    		BluetoothDevice aromashooter = aromaShooterBLE.getConnectedDevice(connectedASN.getBleAddress());
 //    		BluetoothGattService asnService = aromaShooterBLE.getService(aromashooter.getAddress(), "00001802-0000-1000-8000-00805f9b34fb");
 //            if (asnService == null) {
-//                System.err.println("This device does not have the temperature service we are looking for.");
+//                System.err.println("This device does not have the service we are looking for.");
 //                aromashooter.disconnect();
 //                System.exit(-1);
 //            }
-//            System.out.println("Found service " + asnService.getUUID());
+//          System.out.println("Found service " + asnService.getUUID());
     	}
     	
     	System.out.println("Disconnecting device....");
