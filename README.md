@@ -37,10 +37,8 @@
 * Please [download the .zip file](https://github.com/aromajoin/controller-sdk-java/releases/).
 * Extract it and go to /lib/*.
 * Add `controller-java-sdk-*.jar` file to your build path.
-* For USB and RS485:
-    * Add `nrjavaserial-*.jar` file to the build path.
-* For BLE:
-    * Add `tinyb.jar` file to the build path/
+* Add `nrjavaserial-*.jar` file to the build path.
+* Add `tinyb.jar` file to the build path/
 
 ---
 
