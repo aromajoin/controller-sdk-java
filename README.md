@@ -82,7 +82,7 @@ Using *Diffuse APIs*  :
 /**
  * For USB-version device
  * @param durationMilliSec: duration in milliseconds
- * @param density: 0.0 - 1.0
+ * @param density: 0.0 - 1.0. density of aroma. (1.0 ~ maximum). It is recommended to set to `1.0`.
  * @param speed: 0 or 1, recommended value: 1 or AromaShooterSerial.BLOWING_SPEED_MAX
  * @param ports: Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
  */
@@ -92,7 +92,7 @@ asUSB.blow(durrationMilliSec, density, speed, ports)
  * For RS485-version device
  * @param productId: Ex: "ASN1RA0001"
  * @param durationMilliSec: duration in milliseconds
- * @param density: 0.0 - 1.0
+ * @param density: 0.0 - 1.0. density of aroma. (1.0 ~ maximum). It is recommended to set to `1.0`.
  * @param speed: 0 or 1, recommended value: 1 or AromaShooterSerial.BLOWING_SPEED_MAX
  * @param ports: Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
  */
