@@ -64,7 +64,6 @@ dependencies {
 #### Directly download the latest *.jar lib from [the repository.](https://bintray.com/aromajoin/maven/com.aromajoin.sdk%3Ajvm#files/com/aromajoin/sdk/jvm) 
 #### Then, add it into your project's build path.
 
-
 ## Examples  
 ---
 Here you can find short guides for the most common scenarios:
