@@ -1,57 +1,79 @@
-# Controller SDK for Java
+# Controller SDK for Java &middot; [ ![Download](https://api.bintray.com/packages/aromajoin/maven/com.aromajoin.sdk%3Ajvm/images/download.svg) ](https://bintray.com/aromajoin/maven/com.aromajoin.sdk%3Ajvm/_latestVersion) [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
-[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
-
-**The AromaShooterController Java library which is used to communicate with [Aroma Shooter devices](https://aromajoin.com/hardware/shooters/aroma-shooter-1)**  
+**The pure Java library version of AromaShooter Controller SDK which is used to communicate with [Aroma Shooter devices](https://aromajoin.com/hardware/shooters/aroma-shooter-1)**  
 
 # Table of Contents
 1. [Supported devices](https://github.com/aromajoin/controller-sdk-java#supported-devices)  
 2. [Prerequisites](https://github.com/aromajoin/controller-sdk-java#prerequisites)
 3. [Installation](https://github.com/aromajoin/controller-sdk-java#installation)
-4. [Usage](https://github.com/aromajoin/controller-sdk-java#usage)
-    * [Connect devices](https://github.com/aromajoin/controller-sdk-java#connect-devices)
+4. [Examples](https://github.com/aromajoin/controller-sdk-java#usage)
+    * [Instance an Aroma Shooter](https://github.com/aromajoin/controller-sdk-java#connect-devices)
+    * [Initialize an Aroma Shooter Controller]()
+    * [Discover Aroma Shooters (Supported only USB)]()
+    * [Connect Aroma Shooter]()
+    * [Disconnect Aroma Shooter]()
     * [Diffuse scents](https://github.com/aromajoin/controller-sdk-java#diffuse-scents)
-5. [License](https://github.com/aromajoin/controller-sdk-android#license)
+5. [Versioning](https://github.com/aromajoin/controller-sdk-java#versioning)
+6. [Bugs and Feedback](https://github.com/aromajoin/controller-sdk-java#bugs-and-feedback)
+7. [License](https://github.com/aromajoin/controller-sdk-android#license)
 
----
 
 ## Supported devices
-* Aroma Shooter USB version
-* Aroma Shooter RS485 version
-* Aroma Shooter BLE version
 ---
+* Aroma Shooter 1 USB version
+* Aroma Shooter 1 RS-485 version
+
 
 ## Prerequisites
+---
 * JRE version: >= 1.7+
-* For USB and RS485
-    * [Device driver installation](http://www.ftdichip.com/Drivers/VCP.html)
-    * [Dependency lib](https://github.com/NeuronRobotics/nrjavaserial)
+* For communicate to PC serial port
+    * [Device drivers installation](http://www.ftdichip.com/FTDrivers.htm)
 
-* For Bluetooth Low Energy (BLE). Please follow this guides and set up your local environment.
-    * [Dependency lib](https://github.com/intel-iot-devkit/tinyb)
 
+## Installation
 ---
 
-## Installation  
+### For the project uses to a Gradle compile dependency: 
 
-* Please [download the .zip file](https://github.com/aromajoin/controller-sdk-java/releases/).
-* Extract it and go to /lib/*.
-* Add `controller-java-sdk-*.jar` file to your build path.
-* For USB and RS485:
-    * Add `nrjavaserial-*.jar` file to the build path.
-* For BLE:
-    * Add `tinyb.jar` file to the build path/
-
----
-
-## Usage  
-
-*Firstly, imports java library*
+#### *Firstly, add our repository link on the top of your [rootProject]/build.gradle*
 ```Java
-import com.aromajoin.www.aromashooter.*;
+repositories {
+    // ... other repositories
+    maven { url "https://dl.bintray.com/aromajoin/maven/" }
+}
 ```
-### Setup and connect devices
+#### *Then, add the Gradle compile dependency:*
+```Java
+dependencies {
+    // ... other dependencies
+    compile 'com.aromajoin.sdk:jvm:2.0.0'
+}
+```
+### For the maven project:
+#### Add to project's Maven Project Model (POM) file
+```Java
+<dependency>
+  <groupId>com.aromajoin.sdk</groupId>
+  <artifactId>jvm</artifactId>
+  <version>2.0.0</version>
+  <type>pom</type>
+</dependency>
+```
+### For the pure project have no third-party dependency manager:
+#### Directly download the latest *.jar lib from [the repository.](https://bintray.com/aromajoin/maven/com.aromajoin.sdk%3Ajvm#files/com/aromajoin/sdk/jvm) 
+#### Then, add it into your project's build path.
 
+
+## Examples  
+---
+Here you can find short guides for the most common scenarios:
+
+* Trying out the [Sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample) (Recommended way.)
+
+* Here is the common usages to get you started:
+
+### Connect Aroma Shooter devices
 ```Java
 // Declare the port name that Aroma Shooter is connected
 // For Windows: portName = "COMx"
@@ -59,66 +81,107 @@ import com.aromajoin.www.aromashooter.*;
 // For Mac: portName = "/dev/tty.usbserial-xxx"
 String portName = "yourPortName";
 
-// Initialize an USB Aroma Shooter instance
-AromaShooterSerial asUSB = new AromaShooterSerial(portName);
+// Initialize an USB Aroma Shooter instance with port name
+USBAromaShooter usbAromaShooter = new USBAromaShooter(portName);
+usbAromaShooter.connect(); // connect to the device
 
 // Initialize an RS-485 Aroma Shooter instance
-String productId = "ASN1RA0001";
-AromaShooterSerial asRS485 = new AromaShooterSerial(productId, portName);
-
-// Initialize an BLE Aroma Shooter instance
-AromaShooterBLE asBLE = AromaShooterBLE.getInstance();
-// Scanning devices
-List<AromaShooterPeripheral> fileredAromaShooters = aromaShooterBLE.startScanning();
-for(AromaShooterPeripheral asp : fileredAromaShooters){
-    System.out.println(asp.toString());
-}
-// Connect to BLE Aroma Shooter with Mac Address
-aromaShooterBLE.connectDevice("78:C5:E5:6D:EA:B1");
+String serial = "ASN1RA0001"; // this is device's serial
+RS485AromaShooter rs485AromaShooter = new RS485AromaShooter(serial, portName);
+rs485AromaShooter.connect(); // connect to the device
 
 ```
+### Initialize an Aroma Shooter Controller
+In case you want to control not only a single Aroma Shooter, you should use Controller class with its provided APIs easier. 
+```Java
+USBASController usbASController = new USBASController(); // For USB devices
+```
+or
+```Java
+RS485ASController rs485ASController = new RS485ASController(); // For RS-485 devices
+```
+
+### Discover Aroma Shooters (Supported only USB)
+```Java
+usbASController.scan(discoverCallback);
+```
+
+### Connect Aroma Shooter
+```Java
+usbASController.connect(usbAromaShooter, connectCallback);
+
+or
+
+rs485ASController.connect(rs485AromaShooter, connectCallback);
+```
+
+### Disconnect Aroma Shooter
+```Java
+usbASController.disconnect(usbAromaShooter, disconnectCallback);
+
+or
+
+rs485ASController.connect(rs485AromaShooter, disconnectCallback);
+```
+
 ### Diffuse scents 
 
-Using *Diffuse APIs*  :
+Using *Diffuse APIs* for USB device :
 ```Java
 /**
- * For USB-version device
- * @param durationMilliSec: duration in milliseconds
- * @param density: 0.0 - 1.0
- * @param speed: 0 or 1, recommended value: 1 or AromaShooterSerial.BLOWING_SPEED_MAX
- * @param ports: Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
+ * Diffuses aroma at device's ports.
+ * @param usbAromaShooter device to communicate.
+ * @param duration     diffusing duration in milliseconds.
+ * @param booster      whether booster is used or not.
+ * @param ports        port numbers to diffuse aroma. Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
  */
-asUSB.blow(durrationMilliSec, density, speed, ports)  
+usbASController.diffuse(usbAromaShooter, duration, booster, ports);
 
 /**
- * For RS485-version device
- * @param productId: Ex: "ASN1RA0001"
- * @param durationMilliSec: duration in milliseconds
- * @param density: 0.0 - 1.0
- * @param speed: 0 or 1, recommended value: 1 or AromaShooterSerial.BLOWING_SPEED_MAX
- * @param ports: Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
+ * from multiple devices, diffuses aroma at device's ports.
+ * @param usbAromaShooters devices to communicate.
+ * @param duration      diffusing duration in milliseconds.
+ * @param booster       whether booster is used or not.
+ * @param ports         port numbers to diffuse aroma.
  */
-asRS485.blow(productId, durationMilliSec, density, speed, ports)
-
-/**
- * For BLE-version device
- * @param BluetoothDevice: get connected BLE device via asBLE.getConnectedDevice(macAddress)
- * @param durationMilliSec: duration in milliseconds
- * @param speed: 0 or 1, recommended value: 1
- * @param ports: the port number is diffused : Ex: a single integer or int array such as new int[]{1, 2, 3}
- */
- for(AromaShooterPeripheral connectedASN : asBLE.getConnectedDevices()){
-    asBLE.blow(asBLE.getConnectedDevice(connectedASN.getBleAddress()), durationMilliSec, speed, 2);
- }
-
+usbASController.diffuse(usbAromaShooters, duration, booster, ports);
 ``` 
 
+Using *Diffuse APIs* for RS-485 device :
+```Java
+/**
+ * Diffuses aroma at device's ports.
+ * @param rs485AromaShooter device to communicate.
+ * @param duration     diffusing duration in milliseconds.
+ * @param booster      whether booster is used or not.
+ * @param ports        port numbers to diffuse aroma. Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
+ */
+rs485ASController.diffuse(rs485AromaShooter, duration, booster, ports);
+
+/**
+ * from multiple devices, diffuses aroma at device's ports.
+ * @param rs485AromaShooters devices to communicate.
+ * @param duration      diffusing duration in milliseconds.
+ * @param booster       whether booster is used or not.
+ * @param ports         port numbers to diffuse aroma.
+ */
+rs485ASController.diffuse(rs485AromaShooters, duration, booster, ports);
+``` 
+
+## Versioning
+---
+Version 2.x is now considered stable and final. Version 1.x will be no longer maitained.
+
+In case that you still want to use version 1.x, you should read SDK 1.x documentation [here](), and try out [Sample_SDKv1](). 
+
+## Bugs and Feedback
+---
 **For more information, please checkout this repository and refer to the [sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample).**  
 **If you get any issues or require any new features, please create a [new issue](https://github.com/aromajoin/controller-sdk-java/issues).**
 
----
-## License  
 
+## License  
+---
 The Apache License (Apache)
 
     Copyright (c) 2017 Aromajoin Corporation
