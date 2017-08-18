@@ -165,7 +165,7 @@ rs485ASController.diffuse(rs485AromaShooters, duration, booster, ports);
 ## Versioning
 Version 2.x is now considered stable and final. Version 1.x will be no longer maitained.
 
-In case that you still want to use version 1.x, you should read SDK 1.x documentation [here](), and try out [Sample_SDKv1](). 
+In case that you still want to use version 1.x, you should read SDK 1.x documentation [here](https://github.com/aromajoin/controller-sdk-java/blob/master/README_SDK_v1.md), and try out [Sample_SDK_v1](https://github.com/aromajoin/controller-sdk-java/blob/master/Sample_SDK_v1). 
 
 ## Bugs and Feedback
 **For more information, please checkout this repository and refer to the [sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample).**  
