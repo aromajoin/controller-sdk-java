@@ -19,21 +19,17 @@
 
 
 ## Supported devices
----
 * Aroma Shooter 1 USB version
 * Aroma Shooter 1 RS-485 version
 
 
 ## Prerequisites
----
 * JRE version: >= 1.7+
 * For communicate to PC serial port
     * [Device drivers installation](http://www.ftdichip.com/FTDrivers.htm)
 
 
 ## Installation
----
-
 ### For the project uses to a Gradle compile dependency: 
 
 #### *Firstly, add our repository link on the top of your [rootProject]/build.gradle*
@@ -64,8 +60,7 @@ dependencies {
 #### Directly download the latest *.jar lib from [the repository.](https://bintray.com/aromajoin/maven/com.aromajoin.sdk%3Ajvm#files/com/aromajoin/sdk/jvm) 
 #### Then, add it into your project's build path.
 
-## Examples  
----
+## Examples
 Here you can find short guides for the most common scenarios:
 
 * Trying out the [Sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample) (Recommended way.)
@@ -168,19 +163,16 @@ rs485ASController.diffuse(rs485AromaShooters, duration, booster, ports);
 ``` 
 
 ## Versioning
----
 Version 2.x is now considered stable and final. Version 1.x will be no longer maitained.
 
 In case that you still want to use version 1.x, you should read SDK 1.x documentation [here](), and try out [Sample_SDKv1](). 
 
 ## Bugs and Feedback
----
 **For more information, please checkout this repository and refer to the [sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample).**  
 **If you get any issues or require any new features, please create a [new issue](https://github.com/aromajoin/controller-sdk-java/issues).**
 
 
-## License  
----
+## License
 The Apache License (Apache)
 
     Copyright (c) 2017 Aromajoin Corporation
