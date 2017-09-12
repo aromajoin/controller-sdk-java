@@ -77,12 +77,10 @@ String portName = "yourPortName";
 
 // Initialize an USB Aroma Shooter instance with port name
 USBAromaShooter usbAromaShooter = new USBAromaShooter(portName);
-usbAromaShooter.connect(); // connect to the device
 
 // Initialize an RS-485 Aroma Shooter instance
-String serial = "ASN1RA0001"; // this is device's serial
+String serial = "ASN1RA0001"; // device's serial
 RS485AromaShooter rs485AromaShooter = new RS485AromaShooter(serial, portName);
-rs485AromaShooter.connect(); // connect to the device
 
 ```
 ### Initialize an Aroma Shooter Controller
@@ -115,7 +113,7 @@ usbASController.disconnect(usbAromaShooter, disconnectCallback);
 
 or
 
-rs485ASController.connect(rs485AromaShooter, disconnectCallback);
+rs485ASController.disconnect(rs485AromaShooter, disconnectCallback);
 ```
 
 ### Diffuse scents 
