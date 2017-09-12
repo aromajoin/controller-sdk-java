@@ -67,7 +67,7 @@ Here you can find short guides for the most common scenarios:
 
 * Here is the common usages to get you started:
 
-### Connect Aroma Shooter devices
+### Instance an Aroma Shooter device
 ```Java
 // Declare the port name that Aroma Shooter is connected
 // For Windows: portName = "COMx"
@@ -160,7 +160,7 @@ rs485ASController.diffuse(rs485AromaShooter, duration, booster, ports);
 rs485ASController.diffuse(rs485AromaShooters, duration, booster, ports);
 ``` 
 
-## Versioning
+## Version Notes
 Version 2.x is now considered stable and final. Version 1.x will be no longer maitained.
 
 In case that you still want to use version 1.x, you should read SDK 1.x documentation [here](https://github.com/aromajoin/controller-sdk-java/blob/master/README_SDK_v1.md), and try out [Sample_SDK_v1](https://github.com/aromajoin/controller-sdk-java/blob/master/Sample_SDK_v1). 
