@@ -14,14 +14,32 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import com.aromajoin.sdk.jvm.usb.model.USBAromaShooter;
+import com.aromajoin.sdk.core.callback.DisconnectCallback;
+import com.aromajoin.sdk.core.device.AromaShooter;
+import com.aromajoin.sdk.jvm.usb.USBASController;
+
+import java.util.List;
 
 public class USBSample {
 
     public void runTest(){
-        USBAromaShooter aromaShooter = new USBAromaShooter("/dev/ttyUSB0");
-        aromaShooter.connect();
-        aromaShooter.diffuse(3000, 1,3,5);
+        USBASController usbController = new USBASController("/dev/ttyUSB0");
+        List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
+        for(AromaShooter aromaShooter : connectedDevices){
+            usbController.diffuse(aromaShooter, 3000, true, 1,3,5);
+            usbController.diffuse(aromaShooter, 15000, false, 2,5);
+            usbController.disconnect(aromaShooter, new DisconnectCallback() {
+                @Override
+                public void onDisconnect(AromaShooter aromaShooter) {
+                    System.out.println("Disconnected to: " + aromaShooter.getSerial());
+                }
+
+                @Override
+                public void onFailed(AromaShooter aromaShooter, String msg) {
+                    System.err.println(msg);
+                }
+            });
+        }
     }
 
     public static void main(String args[]) {

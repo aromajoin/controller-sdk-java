@@ -37,7 +37,7 @@ repositories {
 ```Java
 dependencies {
     // ... other dependencies
-    compile 'com.aromajoin.sdk:jvm:2.0.0'
+    compile 'com.aromajoin.sdk:jvm:2.0.3'
 }
 ```
 ### Maven
@@ -45,12 +45,12 @@ dependencies {
 <dependency>
   <groupId>com.aromajoin.sdk</groupId>
   <artifactId>jvm</artifactId>
-  <version>2.0.0</version>
+  <version>2.0.3</version>
   <type>pom</type>
 </dependency>
 ```
 ### Binary files (.jar)
-1. Directly download the latest *.jar lib from [the repository.](https://bintray.com/aromajoin/maven/download_file?file_path=com%2Faromajoin%2Fsdk%2Fjvm%2F2.0.1%2Fjvm-2.0.1.jar) 
+1. Directly download the latest *.jar lib from [the repository.](https://bintray.com/aromajoin/maven/download_file?file_path=com%2Faromajoin%2Fsdk%2Fjvm%2F2.0.3%2Fjvm-2.0.3.jar) 
 2. Add it into your project's build path.
 
 ## Usage
@@ -69,11 +69,11 @@ Here you can find short guides for the most common scenarios:
 String portName = "yourPortName";
 
 // Initialize an USB Aroma Shooter instance with port name
-USBAromaShooter aromaShooter = new USBAromaShooter(portName);
+USBASController usbController = new USBASController(portName);
 ```
-### Connect
+### Connected devices
 ```java
-aromaShooter.connect();
+List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
 ```
 ### Diffuse 
 ```java
@@ -84,8 +84,25 @@ aromaShooter.connect();
  * @param booster      whether booster is used or not.
  * @param ports        port numbers to diffuse aroma. Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
  */
-aromaShooter.diffuse(duration, booster, ports);
-``` 
+for(AromaShooter aromaShooter : connectedDevices){
+    usbController.diffuse(aromaShooter, 3000, true, 1,3,5);
+    usbController.diffuse(aromaShooter, 15000, false, 2,5);
+}
+```
+### Disconnect
+```java
+usbController.disconnect(aromaShooter, new DisconnectCallback() {
+    @Override
+    public void onDisconnect(AromaShooter aromaShooter) {
+        System.out.println("Disconnected to: " + aromaShooter.getSerial());
+    }
+
+    @Override
+    public void onFailed(AromaShooter aromaShooter, String msg) {
+        System.err.println(msg);
+    }
+});
+```
 
 ## Issues
 **If you get any issues or require any new features, please create a [new issue](https://github.com/aromajoin/controller-sdk-java/issues).**

@@ -2,3 +2,6 @@
 .gradle/
 .idea/
 build/
+bin/
+src/main/resources/
+src/test/
