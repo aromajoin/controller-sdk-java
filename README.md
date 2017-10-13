@@ -50,7 +50,7 @@ dependencies {
 </dependency>
 ```
 ### Binary files (.jar)
-1. Directly download the latest *.jar lib from [the repository.](https://bintray.com/aromajoin/maven/download_file?file_path=com%2Faromajoin%2Fsdk%2Fjvm%2F2.0.3%2Fjvm-2.0.3.jar) 
+1. Directly download the latest *.jar lib from [the repository.](https://bintray.com/aromajoin/maven/download_file?file_path=com%2Faromajoin%2Fsdk%2Fjvm%2F2.0.4%2Fjvm-2.0.4.jar) 
 2. Add it into your project's build path.
 
 ## Usage
@@ -79,29 +79,15 @@ List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
 ```java
 /**
  * Diffuses aroma at device's ports.
- * @param usbAromaShooter device to communicate.
  * @param duration     diffusing duration in milliseconds.
  * @param booster      whether booster is used or not.
  * @param ports        port numbers to diffuse aroma. Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
  */
-for(AromaShooter aromaShooter : connectedDevices){
-    usbController.diffuse(aromaShooter, 3000, true, 1,3,5);
-    usbController.diffuse(aromaShooter, 15000, false, 2,5);
-}
+usbController.diffuseAll(15000, true, 2,5);
 ```
 ### Disconnect
 ```java
-usbController.disconnect(aromaShooter, new DisconnectCallback() {
-    @Override
-    public void onDisconnect(AromaShooter aromaShooter) {
-        System.out.println("Disconnected to: " + aromaShooter.getSerial());
-    }
-
-    @Override
-    public void onFailed(AromaShooter aromaShooter, String msg) {
-        System.err.println(msg);
-    }
-});
+usbController.disconnectAll();
 ```
 
 ## Issues

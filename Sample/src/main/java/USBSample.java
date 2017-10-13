@@ -24,22 +24,8 @@ public class USBSample {
 
     public void runTest(){
         USBASController usbController = new USBASController("/dev/ttyUSB0");
-        List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
-        for(AromaShooter aromaShooter : connectedDevices){
-            usbController.diffuse(aromaShooter, 3000, true, 1,3,5);
-            usbController.diffuse(aromaShooter, 15000, false, 2,5);
-            usbController.disconnect(aromaShooter, new DisconnectCallback() {
-                @Override
-                public void onDisconnect(AromaShooter aromaShooter) {
-                    System.out.println("Disconnected to: " + aromaShooter.getSerial());
-                }
-
-                @Override
-                public void onFailed(AromaShooter aromaShooter, String msg) {
-                    System.err.println(msg);
-                }
-            });
-        }
+        usbController.diffuseAll(15000, true, 2,5);
+        usbController.disconnectAll();
     }
 
     public static void main(String args[]) {
