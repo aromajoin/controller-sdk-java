@@ -7,14 +7,10 @@
 2. [Prerequisites](https://github.com/aromajoin/controller-sdk-java#prerequisites)
 3. [Installation](https://github.com/aromajoin/controller-sdk-java#installation)
 4. [Usage](https://github.com/aromajoin/controller-sdk-java#usage)
-    * [Instance an Aroma Shooter](https://github.com/aromajoin/controller-sdk-java#instance-an-aroma-shooter-device)
-    * [Initialize an Aroma Shooter Controller](https://github.com/aromajoin/controller-sdk-java#initialize-an-aroma-shooter-controller)
-    * [Discover Aroma Shooters (Supported only USB)](https://github.com/aromajoin/controller-sdk-java#discover-aroma-shooters-supported-only-usb)
-    * [Connect Aroma Shooter](https://github.com/aromajoin/controller-sdk-java#connect-aroma-shooter)
-    * [Disconnect Aroma Shooter](https://github.com/aromajoin/controller-sdk-java#disconnect-aroma-shooter)
-    * [Diffuse scents](https://github.com/aromajoin/controller-sdk-java#diffuse-scents)
-5. [Version Notes](https://github.com/aromajoin/controller-sdk-java#version-notes)
-6. [Bugs and Feedback](https://github.com/aromajoin/controller-sdk-java#bugs-and-feedback)
+    * [Setup](https://github.com/aromajoin/controller-sdk-java#setup)
+    * [Connect](https://github.com/aromajoin/controller-sdk-java#connect)
+    * [Diffuse](https://github.com/aromajoin/controller-sdk-java#diffuse)
+5. [Issues](https://github.com/aromajoin/controller-sdk-java#issues)
 7. [License](https://github.com/aromajoin/controller-sdk-android#license)
 
 
@@ -79,7 +75,7 @@ USBAromaShooter aromaShooter = new USBAromaShooter(portName);
 ```java
 aromaShooter.connect();
 ```
-### Diffuse scents 
+### Diffuse 
 ```java
 /**
  * Diffuses aroma at device's ports.
