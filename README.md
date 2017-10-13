@@ -37,7 +37,7 @@ repositories {
 ```Java
 dependencies {
     // ... other dependencies
-    compile 'com.aromajoin.sdk:jvm:2.0.3'
+    compile 'com.aromajoin.sdk:jvm:2.0.4'
 }
 ```
 ### Maven
@@ -45,7 +45,7 @@ dependencies {
 <dependency>
   <groupId>com.aromajoin.sdk</groupId>
   <artifactId>jvm</artifactId>
-  <version>2.0.3</version>
+  <version>2.0.4</version>
   <type>pom</type>
 </dependency>
 ```
