@@ -64,8 +64,8 @@ Here you can find short guides for the most common scenarios:
 
 * Here is the common usages to get you started:
 
-### Instance an Aroma Shooter device
-```Java
+### Setup
+```java
 // Declare the port name that Aroma Shooter is connected
 // For Windows: portName = "COMx"
 // For Linux: portName = "/dev/ttyUSBx"
@@ -73,50 +73,14 @@ Here you can find short guides for the most common scenarios:
 String portName = "yourPortName";
 
 // Initialize an USB Aroma Shooter instance with port name
-USBAromaShooter usbAromaShooter = new USBAromaShooter(portName);
-
-// Initialize an RS-485 Aroma Shooter instance
-String serial = "ASN1RA0001"; // device's serial
-RS485AromaShooter rs485AromaShooter = new RS485AromaShooter(serial, portName);
-
+USBAromaShooter aromaShooter = new USBAromaShooter(portName);
 ```
-### Initialize an Aroma Shooter Controller
-In case you want to control not only a single Aroma Shooter, you should use Controller class with its provided APIs easier. 
-```Java
-USBASController usbASController = new USBASController(); // For USB devices
+### Connect
+```java
+aromaShooter.connect();
 ```
-or
-```Java
-RS485ASController rs485ASController = new RS485ASController(); // For RS-485 devices
-```
-
-### Discover Aroma Shooters (Supported only USB)
-```Java
-usbASController.scan(discoverCallback);
-```
-
-### Connect Aroma Shooter
-```Java
-usbASController.connect(usbAromaShooter, connectCallback);
-
-or
-
-rs485ASController.connect(rs485AromaShooter, connectCallback);
-```
-
-### Disconnect Aroma Shooter
-```Java
-usbASController.disconnect(usbAromaShooter, disconnectCallback);
-
-or
-
-rs485ASController.disconnect(rs485AromaShooter, disconnectCallback);
-```
-
 ### Diffuse scents 
-
-Using *Diffuse APIs* for USB device :
-```Java
+```java
 /**
  * Diffuses aroma at device's ports.
  * @param usbAromaShooter device to communicate.
@@ -124,44 +88,10 @@ Using *Diffuse APIs* for USB device :
  * @param booster      whether booster is used or not.
  * @param ports        port numbers to diffuse aroma. Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
  */
-usbASController.diffuse(usbAromaShooter, duration, booster, ports);
-
-/**
- * from multiple devices, diffuses aroma at device's ports.
- * @param usbAromaShooters devices to communicate.
- * @param duration      diffusing duration in milliseconds.
- * @param booster       whether booster is used or not.
- * @param ports         port numbers to diffuse aroma.
- */
-usbASController.diffuse(usbAromaShooters, duration, booster, ports);
+aromaShooter.diffuse(duration, booster, ports);
 ``` 
 
-Using *Diffuse APIs* for RS-485 device :
-```Java
-/**
- * Diffuses aroma at device's ports.
- * @param rs485AromaShooter device to communicate.
- * @param duration     diffusing duration in milliseconds.
- * @param booster      whether booster is used or not.
- * @param ports        port numbers to diffuse aroma. Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
- */
-rs485ASController.diffuse(rs485AromaShooter, duration, booster, ports);
-
-/**
- * from multiple devices, diffuses aroma at device's ports.
- * @param rs485AromaShooters devices to communicate.
- * @param duration      diffusing duration in milliseconds.
- * @param booster       whether booster is used or not.
- * @param ports         port numbers to diffuse aroma.
- */
-rs485ASController.diffuse(rs485AromaShooters, duration, booster, ports);
-``` 
-
-## Version Notes
-Version 2.x is now considered stable and final. Version 1.x will be no longer supported.
-
-## Bugs and Feedback
-**For more information, please checkout this repository and refer to the [sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample).**  
+## Issues
 **If you get any issues or require any new features, please create a [new issue](https://github.com/aromajoin/controller-sdk-java/issues).**
 
 
