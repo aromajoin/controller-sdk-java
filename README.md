@@ -3,15 +3,16 @@
 **A pure Java library version of AromaShooter Controller SDK which is used to communicate with [Aroma Shooter devices](https://aromajoin.com/hardware/shooters/aroma-shooter-1)**  
 
 # Table of Contents
-1. [Supported devices](https://github.com/aromajoin/controller-sdk-java#supported-devices)  
-2. [Prerequisites](https://github.com/aromajoin/controller-sdk-java#prerequisites)
-3. [Installation](https://github.com/aromajoin/controller-sdk-java#installation)
-4. [Usage](https://github.com/aromajoin/controller-sdk-java#usage)
-    * [Setup](https://github.com/aromajoin/controller-sdk-java#setup)
-    * [Connect](https://github.com/aromajoin/controller-sdk-java#connect)
-    * [Diffuse](https://github.com/aromajoin/controller-sdk-java#diffuse)
-5. [Issues](https://github.com/aromajoin/controller-sdk-java#issues)
-7. [License](https://github.com/aromajoin/controller-sdk-android#license)
+1. [Supported devices](#supported-devices)  
+2. [Prerequisites](#prerequisites)
+3. [Installation](#installation)
+4. [Usage](#usage)
+    * [Setup](#setup)
+    * [Connected devices](#connected-devices)
+    * [Diffuse](#diffuse)
+    * [Disconnect](#disconnect)
+5. [Issues](#issues)
+7. [License](#license)
 
 
 ## Supported devices
