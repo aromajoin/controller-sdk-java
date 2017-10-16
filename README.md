@@ -38,7 +38,7 @@ repositories {
 ```Java
 dependencies {
     // ... other dependencies
-    compile 'com.aromajoin.sdk:jvm:2.0.4'
+    compile 'com.aromajoin.sdk:jvm:2.0.5'
 }
 ```
 ### Maven
@@ -46,12 +46,12 @@ dependencies {
 <dependency>
   <groupId>com.aromajoin.sdk</groupId>
   <artifactId>jvm</artifactId>
-  <version>2.0.4</version>
+  <version>2.0.5</version>
   <type>pom</type>
 </dependency>
 ```
 ### Binary files (.jar)
-1. Directly download the latest *.jar lib from [the repository.](https://bintray.com/aromajoin/maven/download_file?file_path=com%2Faromajoin%2Fsdk%2Fjvm%2F2.0.4%2Fjvm-2.0.4.jar) 
+1. Directly download the latest *.jar lib from [the repository.](https://bintray.com/aromajoin/maven/download_file?file_path=com%2Faromajoin%2Fsdk%2Fjvm%2F2.0.5%2Fjvm-2.0.5.jar) 
 2. Add it into your project's build path.
 
 ## Usage
@@ -72,10 +72,46 @@ String portName = "yourPortName";
 // Initialize an USB Aroma Shooter instance with port name
 USBASController usbController = new USBASController(portName);
 ```
+### Scan device
+In case that you can not identify the port name that plugged in Aroma Shooter.
+This is a utility function helps to detecting Aroma Shooter.
+
+```java
+usbController.scan(new DiscoverCallback() {
+    @Override
+    public void onDiscovered(List<AromaShooter> aromaShooters) {
+        for(AromaShooter aromaShooter : aromaShooters){
+            // Detected Aroma Shooter.
+        }
+    }
+
+    @Override
+    public void onFailed(String msg) {
+       // Failed on scanning.
+    }
+});
+```
+
+### Connect
+```java
+usbController.connect(aromaShooter, new ConnectCallback() {
+    @Override
+    public void onConnected(AromaShooter aromaShooter) {
+        // Connected Aroma Shooter
+    }
+
+    @Override
+    public void onFailed(AromaShooter aromaShooter, String msg) {
+        // Failed on connecting.
+    }
+});
+```
+
 ### Connected devices
 ```java
 List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
 ```
+
 ### Diffuse 
 ```java
 /**
@@ -84,7 +120,7 @@ List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
  * @param booster      whether booster is used or not.
  * @param ports        port numbers to diffuse aroma. Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
  */
-usbController.diffuseAll(15000, true, 2,5);
+usbController.diffuseAll(5000, true, 2,5);
 ```
 ### Disconnect
 ```java

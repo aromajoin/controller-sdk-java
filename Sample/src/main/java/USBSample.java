@@ -24,7 +24,7 @@ public class USBSample {
 
     public void runTest(){
         USBASController usbController = new USBASController("/dev/ttyUSB0");
-        usbController.diffuseAll(15000, true, 2,5);
+        usbController.diffuseAll(5000, true, 1,3,5);
         usbController.disconnectAll();
     }
 
