@@ -122,15 +122,16 @@ List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
  */
 usbController.diffuseAll(5000, true, 2,5);
 ```
-### Disconnect all devices after finished all diffuse threads
-```java
-usbController.disconnectAll();
-```
-### Stop all ports of current connected devices if they are diffusing 
+### Stop
+Stop all ports of current connected devices if they are diffusing 
 ```java
 usbController.stopAllPorts();
 ```
-
+### Disconnect
+Disconnect all devices on serial ports after finished all diffuse threads
+```java
+usbController.disconnectAll();
+```
 ## Issues
 **If you get any issues or require any new features, please create a [new issue](https://github.com/aromajoin/controller-sdk-java/issues).**
 
