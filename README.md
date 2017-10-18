@@ -10,6 +10,7 @@
     * [Setup](#setup)
     * [Connected devices](#connected-devices)
     * [Diffuse](#diffuse)
+    * [Stop](#stop)
     * [Disconnect](#disconnect)
 5. [Issues](#issues)
 7. [License](#license)
