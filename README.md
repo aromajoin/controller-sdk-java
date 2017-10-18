@@ -122,9 +122,9 @@ List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
  */
 usbController.diffuseAll(5000, true, 2,5);
 ```
-### Disconnect
+### Stop all ports of current connected devices if they are diffusing 
 ```java
-usbController.disconnectAll();
+usbController.stopAllPorts();
 ```
 
 ## Issues
