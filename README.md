@@ -39,7 +39,7 @@ repositories {
 ```Java
 dependencies {
     // ... other dependencies
-    compile 'com.aromajoin.sdk:jvm:2.0.5'
+    compile 'com.aromajoin.sdk:jvm:2.0.6'
 }
 ```
 ### Maven
@@ -47,12 +47,12 @@ dependencies {
 <dependency>
   <groupId>com.aromajoin.sdk</groupId>
   <artifactId>jvm</artifactId>
-  <version>2.0.5</version>
+  <version>2.0.6</version>
   <type>pom</type>
 </dependency>
 ```
 ### Binary files (.jar)
-1. Directly download the latest *.jar lib from [the repository.](https://bintray.com/aromajoin/maven/download_file?file_path=com%2Faromajoin%2Fsdk%2Fjvm%2F2.0.5%2Fjvm-2.0.5.jar) 
+1. Directly download the latest *.jar lib from [the repository.](https://bintray.com/aromajoin/maven/download_file?file_path=com%2Faromajoin%2Fsdk%2Fjvm%2F2.0.6%2Fjvm-2.0.6.jar) 
 2. Add it into your project's build path.
 
 ## Usage
