@@ -12,15 +12,15 @@
     * [セットアップ](#セットアップ)
     * [デバイスのスキャンと接続](#デバイスのスキャンと接続)
     * [接続されたデバイス](#接続されたデバイス)
-    * [香りを拡散する](#香りを拡散する)
+    * [香りを噴射する](#香りを噴射する)
     * [拡散を止める](#拡散を止める)
     * [切断する](#切断する)
 5. [問題](#問題)
 6. [ライセンス](#ライセンス)
 
 ## 対応デバイス
-* Aroma Shooter 1 USB
-* Aroma Shooter 1 RS-485
+* Aroma Shooter USBタイプ
+* Aroma Shooter RS-485タイプ
 
 ## 前提条件
 * JRE版: >= 1.8+
@@ -29,14 +29,14 @@
 ## インストール
 ### Gradle
 
-1. まず、[rootProject]/build.gradleの上にリポジトリを追加します。
+1. 初めに[rootProject]/build.gradleの上にリポジトリを追加します。
 ```gradle
 repositories {
     // ... other repositories
     maven { url "https://dl.bintray.com/aromajoin/maven/" }
 }
 ```
-2. 次に、`controller-sdk`依存関係を追加します。
+2. 次に`controller-sdk`依存関係を追加します。
 ```gradle
 dependencies {
     // ... other dependencies
@@ -61,7 +61,7 @@ dependencies {
 
 ### セットアップ
 ```java
-// Initialize an USB Aroma Shooter
+// USBAromaShooterを初期化する
 USBASController usbController = new USBASController();
 ```
 ### デバイスのスキャンと接続
@@ -87,18 +87,18 @@ usbController.scanAndConnect(new DiscoverCallback() {
 List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
 ```
 
-### 香りを拡散する 
+### 香りを噴射する
 ```java
 /**
- * @param duration     拡散持続時間（ミリ秒）。
- * @param booster      ブースターが使用されているかどうかを判定する。(true: より強く拡散する, false: より弱く拡散する)
- * @param ports        カートリッジ番号を拡散する。値：1 ~ 6.
+ * @param duration     噴射持続時間（ミリ秒）。
+ * @param booster      ブースターが使用されているかどうかを判定する。(true: より強く噴射する, false: より弱く噴射する)
+ * @param ports        カートリッジ番号を噴射する。値：1 ~ 6.
  */
-// 例：以下のコードは、カートリッジ2と5を3秒間拡散します。
+// 例：以下のコードは、カートリッジ2と5を3秒間噴射します。
 usbController.diffuseAll(3000, true, 2, 5);
 ```
-### 拡散を止める
-拡散している場合は、現在接続されているデバイスのすべてのポートを停止する。
+### 噴射を止める
+噴射している場合は、現在接続されているデバイスのすべてのポートを停止する。
 ```java
 usbController.stopAllPorts();
 ```
