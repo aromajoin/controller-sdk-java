@@ -94,7 +94,7 @@ List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
  * @param booster      ブースターが使用されているかどうかを判定する。(true: より強く拡散する, false: より弱く拡散する)
  * @param ports        カートリッジ番号を拡散する。値：1 ~ 6.
  */
- 例：以下のコードは、カートリッジ2と5を3秒間拡散します。
+// 例：以下のコードは、カートリッジ2と5を3秒間拡散します。
 usbController.diffuseAll(3000, true, 2, 5);
 ```
 ### 拡散を止める
