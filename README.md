@@ -1,3 +1,5 @@
+[English](https://github.com/aromajoin/controller-sdk-java) / [日本語](README-JP.md)
+
 # Controller SDK for Java &middot; [ ![Download](https://api.bintray.com/packages/aromajoin/maven/com.aromajoin.sdk%3Ajvm/images/download.svg) ](https://bintray.com/aromajoin/maven/com.aromajoin.sdk%3Ajvm/_latestVersion) [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 **A pure Java library version of AromaShooter Controller SDK which is used to communicate with [Aroma Shooter devices](https://aromajoin.com/hardware/shooters/aroma-shooter-1)**  
@@ -8,6 +10,7 @@
 3. [Installation](#installation)
 4. [Usage](#usage)
     * [Setup](#setup)
+    * [Scan and connect device](#scan-and-connect-device)
     * [Connected devices](#connected-devices)
     * [Diffuse](#diffuse)
     * [Stop](#stop)
@@ -17,8 +20,8 @@
 
 
 ## Supported devices
-* Aroma Shooter 1 USB version
-* Aroma Shooter 1 RS-485 version
+* Aroma Shooter 1 USB
+* Aroma Shooter 1 RS-485
 
 
 ## Prerequisites
@@ -29,14 +32,14 @@
 ### Gradle
 
 1. Firstly, add our repository on the top of your [rootProject]/build.gradle.
-```Java
+```gradle
 repositories {
     // ... other repositories
     maven { url "https://dl.bintray.com/aromajoin/maven/" }
 }
 ```
 2. Then, add `controller-sdk` dependency.
-```Java
+```gradle
 dependencies {
     // ... other dependencies
     compile 'com.aromajoin.sdk:jvm:2.x.x'
@@ -56,25 +59,14 @@ dependencies {
 2. Add it into your project's build path.
 
 ## Usage
-Here you can find short guides for the most common scenarios:
-
-* Trying out the [Sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample) (Recommended way.)
-
-* Here is the common usages to get you started:
+For details, please check our [Sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample) (Recommended way.)
 
 ### Setup
 ```java
-// Declare the port name that Aroma Shooter is connected
-// For Windows: portName = "COMx"
-// For Linux: portName = "/dev/ttyUSBx"
-// For Mac: portName = "/dev/tty.usbserial-xxx"
-String portName = "yourPortName";
-
-// Initialize an USB Aroma Shooter instance with port name
-USBASController usbController = new USBASController(portName);
+// Initialize an USB Aroma Shooter instance
+USBASController usbController = new USBASController();
 ```
 ### Scan and connect device
-This function can be used in almost general cases, and you do not need to know specific port names which AromaShooter is plugged to.
 
 ```java
 usbController.scanAndConnect(new DiscoverCallback() {
@@ -103,9 +95,10 @@ List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
  * Diffuses aroma at device's ports.
  * @param duration     diffusing duration in milliseconds.
  * @param booster      whether booster is used or not.
- * @param ports        port numbers to diffuse aroma. Ex: new int[]{1, 2, 3} => diffuse aroma at cartridge 1, 2, and 3. Port number is 1 ~ 7.
+ * @param ports        cartridge numbers to diffuse aroma. Value: 1 ~ 6.
  */
-usbController.diffuseAll(5000, true, 2, 5);
+// For example, the following codes will diffuse aroma at cartridge 2 and 5 fro 3 seconds.
+usbController.diffuseAll(3000, true, 2, 5);
 ```
 ### Stop
 Stop all ports of current connected devices if they are diffusing 
