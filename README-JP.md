@@ -111,4 +111,4 @@ usbController.disconnectAll();
 **問題が発生したり、新機能が必要な場合は、[新しい問題](https://github.com/aromajoin/controller-sdk-java/issues)を作成してください。**
 
 ## ライセンス
-[こちら](https://github.com/aromajoin/controller-sdk-windows/blob/master/LICENSE.md)を参照してください。
+[こちら](https://github.com/aromajoin/controller-sdk-java/blob/master/LICENSE.md)を参照してください。
