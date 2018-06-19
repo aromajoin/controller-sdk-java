@@ -98,12 +98,12 @@ List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
 usbController.diffuseAll(3000, true, 2, 5);
 ```
 ### 噴射を止める
-噴射している場合は、現在接続されているデバイスのすべてのポートを停止する。
+噴射している場合は、接続されているデバイスのすべてのポートを停止します。
 ```java
 usbController.stopAllPorts();
 ```
 ### 切断する
-すべてのデバイスを切断する。
+すべてのデバイスを切断します。
 ```java
 usbController.disconnectAll();
 ```
