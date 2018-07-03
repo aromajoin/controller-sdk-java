@@ -1,16 +1,15 @@
-version '1.0.0-SNAPSHOT'
+group 'com.aromajoin'
+version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
 repositories {
-    jcenter()
-    mavenCentral()
-    maven { url "https://dl.bintray.com/aromajoin/maven/" }
+  mavenCentral()
+  maven { url "https://dl.bintray.com/aromajoin/maven/" }
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile 'com.aromajoin.sdk:jvm:2.0.4'
+  compile 'com.aromajoin.sdk:jvm:2.0.10'
 }
