@@ -41,15 +41,4 @@ project.properties
 
 ##Gradle-based build
 build/
-core/src/main/resources/
-core/src/test/resources/
-jvm/src/test/
 private.key
-.gradle/
-gradle/
-gradlew
-gradlew.bat
-src/main/java/AromaShooterUSBSample.java
-src/main/resources/
-src/test/
-src/
