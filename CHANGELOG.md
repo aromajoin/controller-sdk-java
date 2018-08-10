@@ -1,25 +1,24 @@
 Change Log
-===
+==========
 
-Version 1.1.0 *(2017-03-15)*
----
-* Integrate API that work with Aroma Shooter BLE devices.
-* Fix the issue of package naming.
----
-Version 1.0.2 *(2017-03-06)*
---- 
-* Fix the issue of controlling multiple Aroma Shooter RS-485 devices at the same time.
-* Update the feature of discovering available ports for RS-485 devices.
+Version 2.1.0 (2018-07-30)
+--------------------------
+* Add intensity control function
+* Limit the diffuse duration to 10 sec
 
----
-Version 1.0.1 *(2017-03-02)*
----
-* Discover available ports that Aroma Shooter USB or RS-485 devices are connected to.
+Version 2.0.9 *(2017-12-20)*
+----------------------------
+* Improve annoying PortInUseException handling part
 
----
-Version 1.0.0  *(2017-03-01)*
----
-* Initial release
-  * Connect USB or RS-485 devices.
-  * Disconnect devices.
-  * Send command to diffuse scents on specific serial ports.
+Version 2.0.8 *(2017-12-15)*
+----------------------------
+* Downgrade nsjavaserial library from version 3.12.1 to 3.11.0
+(Due to error on Raspberry Pi reported here: https://github.com/NeuronRobotics/nrjavaserial/issues/84)
+
+Version 2.0.7 *(2017-12-08)*
+----------------------------
+* Refactor com.aromajoin.sdk.jvm.usb connection part codes.
+
+Version 2.0.0 *(2017-08-18)*
+----------------------------
+* First release
