@@ -2,7 +2,7 @@
 
 # Controller SDK for Java &middot; [ ![Download](https://api.bintray.com/packages/aromajoin/maven/com.aromajoin.sdk%3Ajvm/images/download.svg) ](https://bintray.com/aromajoin/maven/com.aromajoin.sdk%3Ajvm/_latestVersion) [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
-**A pure Java library version of AromaShooter Controller SDK which is used to communicate with [Aroma Shooter devices](https://aromajoin.com/hardware/shooters/aroma-shooter-1)**  
+**A Java library version of AromaShooter Controller SDK which is used to communicate with [Aroma Shooter devices](https://aromajoin.com/hardware/shooters/aroma-shooter-1)**  
 
 # Table of Contents
 1. [Supported devices](#supported-devices)  
@@ -21,8 +21,6 @@
 
 ## Supported devices
 * Aroma Shooter 1 USB
-* Aroma Shooter 1 RS-485
-
 
 ## Prerequisites
 * JRE version: >= 1.8+
@@ -59,11 +57,11 @@ dependencies {
 2. Add it into your project's build path.
 
 ## Usage
-For details, please check our [Sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample) (Recommended way.)
+For details, please check our [Sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample) (Recommended).
 
 ### Setup
 ```java
-// Initialize an USB Aroma Shooter instance
+// Initialize an instance of USBASController
 USBASController usbController = new USBASController();
 ```
 ### Scan and connect device
@@ -92,12 +90,12 @@ List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
 ### Diffuse 
 ```java
 /**
- * Diffuses aroma at device's ports.
+ * Diffuses aroma at specific ports from all connected devices.
  * @param duration     diffusing duration in milliseconds.
- * @param booster      whether booster is used or not.
+ * @param booster      whether booster is used or not. 
  * @param ports        cartridge numbers to diffuse aroma. Value: 1 ~ 6.
  */
-// For example, the following codes will diffuse aroma at cartridge 2 and 5 fro 3 seconds.
+// For example, the following codes will diffuse aroma at cartridge 2 and 5 for 3 seconds.
 usbController.diffuseAll(3000, true, 2, 5);
 ```
 ### Stop
