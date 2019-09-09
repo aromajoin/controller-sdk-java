@@ -5,19 +5,10 @@ import java.util.List;
 
 public class AromaShooterUSBSample {
   public static void main(String args[]) {
-    System.out.println("======= A sample of Controller SDK for Aroma Shooter USB=========");
-    //testWithSpecificPort();
-    testWithAutomaticScan();
-    System.out.println("======= DONE =========");
-  }
-
-  /**
-   * You can define AromaShooter USB connected port.
-   */
-  private static void testWithSpecificPort() {
-    USBASController usbController = new USBASController("/dev/tty.usbserial-AH03I8XI");
-    usbController.diffuseAll(3000, true, 2, 3);
-    usbController.disconnectAll();
+    System.out.println("Aroma Shooter's SDK sample!");
+    //testWithAutomaticScan();
+    testWithAutomaticScanSync();
+    System.out.println("Completed.");
   }
 
   /**
@@ -31,11 +22,40 @@ public class AromaShooterUSBSample {
           System.out.println("AromaShooter: " + aromaShooter.getSerial());
         }
         usbController.diffuseAll(3000, true, 2, 3);
+        usbController.disconnectAll();
       }
 
       @Override public void onFailed(String msg) {
 
       }
     });
+  }
+
+  /**
+   * Scans and diffuses scents synchronously
+   */
+  private static void testWithAutomaticScanSync() {
+    USBASController usbController = new USBASController();
+    usbController.scanAndConnect();
+    if (!usbController.getConnectedDevices().isEmpty()) {
+      for (AromaShooter aromaShooter : usbController.getConnectedDevices()) {
+        System.out.println("AromaShooter: " + aromaShooter.getSerial());
+      }
+      usbController.diffuseAll(3000, true, 2, 3, 5);
+      try {
+        Thread.sleep(500);
+        usbController.stopAllPorts();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+    //try {
+    //  Thread.sleep(10000);
+    //} catch (InterruptedException e) {
+    //  e.printStackTrace();
+    //}
+    //usbController.diffuse(usbController.getConnectedDevices().get(0), 3000, true, 2, 3);
+    //usbController.diffuse("ASN1UA0150", 3000, true, 4, 6);
+    usbController.disconnectAll();
   }
 }
