@@ -103,16 +103,12 @@ usbController.diffuseAll(3000, true, 2, 5);
 /**
  * AS2のすべての接続デバイスからの特定のポートでの香りの拡散
  * @param duration              拡散時間（ミリ秒）
- * @param boosterIntensity      ブースターポート。値： 0~100.
- * @param fanIntensity          ファンポート。値： 0~100.
- * @param ports                 カートリッジ番号で香りを拡散します。値: 1 ~ 6.
+ * @param boosterIntensity      ブースターポート。値： 0~100
+ * @param fanIntensity          ファンポート。値： 0~100
+ * @param ports                 ポートの配列。値: Port(portNumber, portIntensity)
  */
  
-// たとえば、次のコードはカートリッジ1と2で3秒間アロマを拡散します。
-Port port1 = new Port(1, 100);   // ポート1の強度は100です
-Port port2 = new Port(2, 50);    // ポート2の強度は50
-
-usbController.diffuseAll(3000, 0, 100, [port1, port2]);
+usbController.diffuseAll(duration, boosterIntensity, fanIntensity, ports);
 ```
 
 ### 噴射を止める
