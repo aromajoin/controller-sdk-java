@@ -97,6 +97,15 @@ List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
 // 例：以下のコードは、カートリッジ2と5を3秒間噴射します。
 usbController.diffuseAll(3000, true, 2, 5);
 ```
+
+* AS2（Aroma Shooter 2）デバイスのみのディフューザー香りメソッド
+```java
+Port port1 = new Port(1, 100);
+Port port2 = new Port(2, 50);
+
+usbController.diffuseAll(3000, 0, 100, [port1, port2]);
+```
+
 ### 噴射を止める
 噴射している場合は、接続されているデバイスのすべてのポートを停止します。
 ```java
