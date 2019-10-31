@@ -95,7 +95,7 @@ List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
  * @param ports        カートリッジ番号を噴射する。値：1 ~ 6.
  */
 // 例：以下のコードは、カートリッジ2と5を3秒間噴射します。
-usbController.diffuseAll(3000, true, 2, 5);
+usbController.diffuseAll(duration, boosterIntensity, fanIntensity, ports);
 ```
 
 * AS2（Aroma Shooter 2）デバイスのみのディフューザー香りメソッド
