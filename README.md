@@ -101,8 +101,17 @@ usbController.diffuseAll(3000, true, 2, 5);
 
 * Diffuse scents method for AS2 (AromaShooter 2) devices only
 ```java
-Port port1 = new Port(1, 100);
-Port port2 = new Port(2, 50);
+/**
+ * Diffuses aroma at specific ports from all connected devices.
+ * @param duration              diffusing duration in milliseconds.
+ * @param boosterIntensity      booster port. Value: 0~100.
+ * @param fanIntensity          fan port. Value: 0~100.
+ * @param ports                 cartridge numbers to diffuse aroma. Value: 1 ~ 6.
+ */
+ 
+// For example, the following codes will diffuse aroma at cartridge 1 and 2 for 3 seconds.
+Port port1 = new Port(1, 100);   // intensity is 100 for port 1
+Port port2 = new Port(2, 50);    // intensity is 50 for port 2
 
 usbController.diffuseAll(3000, 0, 100, [port1, port2]);
 ```
