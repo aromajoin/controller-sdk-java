@@ -96,7 +96,7 @@ List<AromaShooter> connectedDevices = usbController.getConnectedDevices();
  * @param ports        cartridge numbers to diffuse aroma. Value: 1 ~ 6.
  */
 // For example, the following codes will diffuse aroma at cartridge 2 and 5 for 3 seconds.
-usbController.diffuseAll(3000, true, 2, 5);
+usbController.diffuseAll(duration, booster, ports);
 ```
 
 * Diffuse scents method for AS2 (AromaShooter 2) devices only
