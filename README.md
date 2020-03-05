@@ -20,7 +20,11 @@
 
 
 ## Supported devices
-* Aroma Shooter 1 USB
+* Aroma Shooter 1 USB version
+* Aroma Shooter 2
+
+## Connection
+* USB
 
 ## Prerequisites
 * JRE version: >= 1.8+
