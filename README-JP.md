@@ -20,7 +20,10 @@
 
 ## 対応デバイス
 * Aroma Shooter USBタイプ
-* Aroma Shooter RS-485タイプ
+* Aroma Shooter 2
+
+## 対応接続
+* USB 
 
 ## 前提条件
 * JRE版: >= 1.8+
