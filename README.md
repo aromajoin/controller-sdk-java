@@ -116,6 +116,18 @@ usbController.diffuseAll(duration, booster, ports);
 controller.diffuseAll(duration, boosterIntensity, fanIntensity, ports);
 ```
 
+* Other diffuse methods
+```java
+// Diffuse one Aroma Shooter
+controller.diffuse(aromaShooter, duration, booster, ports);
+// Diffuse one Aroma Shooter with its serial number input
+controller.diffuse(aromaShooterSerial, duration, booster, ports);
+// Diffuse one Aroma Shooter with intensity (Aroma Shooter 2 supported only)
+controller.diffuse(aromaShooter, durationMilliSec, boosterIntensity, fanIntensity, ports);
+// Diffuse one Aroma Shooter with intensity and serial number input (Aroma Shooter 2 supported only)
+controller.diffuse(aromaShooterSerial, durationMilliSec, boosterIntensity, fanIntensity, ports);
+```
+
 ### Stop
 Stop all ports of current connected devices if they are diffusing 
 ```java
