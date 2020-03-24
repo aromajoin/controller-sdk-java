@@ -127,10 +127,15 @@ controller.diffuse(aromaShooterSerial, durationMilliSec, boosterIntensity, fanIn
 ```
 
 ### 噴射を止める
-噴射している場合は、接続されているデバイスのすべてのポートを停止します。
+* 噴射している場合は、接続されているデバイスのすべてのポートを停止します。
 ```java
 usbController.stopAllPorts();
 ```
+* 噴射している場合は、１つのデバイスのすべてのポートを停止します。
+```java
+usbController.stopAllPorts(aromaShooter);
+```
+
 ### 切断する
 すべてのデバイスを切断します。
 ```java
