@@ -129,10 +129,15 @@ controller.diffuse(aromaShooterSerial, durationMilliSec, boosterIntensity, fanIn
 ```
 
 ### Stop
-Stop all ports of current connected devices if they are diffusing 
+* Stop all ports of current connected devices if they are diffusing 
 ```java
 usbController.stopAllPorts();
 ```
+* Stop all ports of one device if it is diffusing scents
+```java
+usbController.stopAllPorts(aromaShooter);
+```
+
 ### Disconnect
 Disconnect all devices.
 ```java
