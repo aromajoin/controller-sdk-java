@@ -114,6 +114,18 @@ usbController.diffuseAll(duration, boosterIntensity, fanIntensity, ports);
 usbController.diffuseAll(duration, boosterIntensity, fanIntensity, ports);
 ```
 
+* その他の噴射法
+```java
+// 1つのアロマシューターに香りを噴射する
+controller.diffuse(aromaShooter, duration, booster, ports);
+// シリアル番号入力で1つのアロマシューターに香りを噴射する
+controller.diffuse(aromaShooterSerial, duration, booster, ports);
+// 1つのアロマシューターに香りを噴射する [アロマシューター2のみがサポートされています](香りの強度を調整可)
+controller.diffuse(aromaShooter, durationMilliSec, boosterIntensity, fanIntensity, ports);
+// シリアル番号入力で1つのアロマシューターに香りを噴射する [アロマシューター2のみがサポートされています](香りの強度を調整可)
+controller.diffuse(aromaShooterSerial, durationMilliSec, boosterIntensity, fanIntensity, ports);
+```
+
 ### 噴射を止める
 噴射している場合は、接続されているデバイスのすべてのポートを停止します。
 ```java
