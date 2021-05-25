@@ -31,7 +31,12 @@
 * Donwload and install [drivers](http://www.ftdichip.com/FTDrivers.htm) based on your OS.
 
 ## Installation
-### Gradle
+
+### Binary files (.jar)
+1. Directly download the [latest controller-sdk-java.jar file](https://github.com/aromajoin/controller-sdk-java/releases/tag/v2.4.0). 
+2. Add it into your project's build path.
+
+### Gradle - Deprecated (Fixing)
 
 1. Firstly, add our repository on the top of your [rootProject]/build.gradle.
 ```gradle
@@ -47,7 +52,7 @@ dependencies {
     compile 'com.aromajoin.sdk:jvm:2.x.x'
 }
 ```
-### Maven
+### Maven - Deprecated (Fixing)
 ```xml
 <dependency>
   <groupId>com.aromajoin.sdk</groupId>
@@ -56,9 +61,6 @@ dependencies {
   <type>pom</type>
 </dependency>
 ```
-### Binary files (.jar)
-1. Directly download the latest *.jar file from [Bintray.](https://bintray.com/aromajoin/maven/com.aromajoin.sdk%3Ajvm#files/com/aromajoin/sdk/jvm) 
-2. Add it into your project's build path.
 
 ## Usage
 For details, please check our [Sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample) (Recommended).
