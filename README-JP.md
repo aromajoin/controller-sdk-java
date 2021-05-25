@@ -30,7 +30,12 @@
 * [ドライバ](http://www.ftdichip.com/FTDrivers.htm)をダウンロードしてインストールしてください。
 
 ## インストール
-### Gradle
+
+### バイナリファイル（.jar)
+1. [最新のcontroller-sdk-java.jarファイル](https://github.com/aromajoin/controller-sdk-java/releases/tag/v2.4.0)をダウンロードしてください。
+2. それをプロジェクトのビルドパスに追加します。
+
+### Gradle （非推奨）
 
 1. 初めに[rootProject]/build.gradleの上にリポジトリを追加します。
 ```gradle
@@ -46,7 +51,7 @@ dependencies {
     compile 'com.aromajoin.sdk:jvm:2.x.x'
 }
 ```
-### Maven
+### Maven （非推奨）
 ```xml
 <dependency>
   <groupId>com.aromajoin.sdk</groupId>
@@ -55,9 +60,6 @@ dependencies {
   <type>pom</type>
 </dependency>
 ```
-### バイナリファイル（.jar)
-1. 最新の* .jarファイルを[Bintray](https://bintray.com/aromajoin/maven/com.aromajoin.sdk%3Ajvm#files/com/aromajoin/sdk/jvm)から直接ダウンロードしてください。
-2. それをプロジェクトのビルドパスに追加します。
 
 ## 使用法
 詳細は[サンプルプロジェクト](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample)をチェックしてください。
