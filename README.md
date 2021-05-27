@@ -1,6 +1,7 @@
 [English](https://github.com/aromajoin/controller-sdk-java) / [日本語](README-JP.md)
 
-# Controller SDK for Java &middot; [ ![Download](https://api.bintray.com/packages/aromajoin/maven/com.aromajoin.sdk%3Ajvm/images/download.svg) ](https://bintray.com/aromajoin/maven/com.aromajoin.sdk%3Ajvm/_latestVersion) [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html) [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/aromajoin-software/?tab=posts)
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/aromajoin-software/?tab=posts)
 
 **A Java library version of AromaShooter Controller SDK which is used to communicate with [Aroma Shooter devices](https://aromajoin.com/products/aroma-shooter)**  
 
@@ -32,35 +33,28 @@
 
 ## Installation
 
-### Binary files (.jar)
-1. Directly download the [latest controller-sdk-java.jar file](https://github.com/aromajoin/controller-sdk-java/releases/tag/v2.4.0). 
-2. Add it into your project's build path.
-
-### Gradle - Deprecated (Fixing)
-
-1. Firstly, add our repository on the top of your [rootProject]/build.gradle.
-```gradle
-repositories {
-    // ... other repositories
-    maven { url "https://dl.bintray.com/aromajoin/maven/" }
-}
-```
-2. Then, add `controller-sdk` dependency.
+### Gradle
+Please add `controller-sdk` dependency.
 ```gradle
 dependencies {
     // ... other dependencies
-    compile 'com.aromajoin.sdk:jvm:2.x.x'
+    compile 'com.aromajoin.sdk:jvm:2.4.0'
 }
 ```
-### Maven - Deprecated (Fixing)
+
+### Maven
 ```xml
 <dependency>
   <groupId>com.aromajoin.sdk</groupId>
   <artifactId>jvm</artifactId>
-  <version>2.x.x</version>
+  <version>2.4.0</version>
   <type>pom</type>
 </dependency>
 ```
+
+### Binary files (.jar)
+1. Directly download the [latest controller-sdk-java.jar file](https://github.com/aromajoin/controller-sdk-java/releases/tag/v2.4.0). 
+2. Add it into your project's build path.
 
 ## Usage
 For details, please check our [Sample project](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample) (Recommended).
