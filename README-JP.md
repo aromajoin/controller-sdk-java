@@ -1,6 +1,7 @@
 [English](https://github.com/aromajoin/controller-sdk-java) / [日本語](README-JP.md)
 
-# ControllerSDK - Java版 &middot; [ ![Download](https://api.bintray.com/packages/aromajoin/maven/com.aromajoin.sdk%3Ajvm/images/download.svg) ](https://bintray.com/aromajoin/maven/com.aromajoin.sdk%3Ajvm/_latestVersion) [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html) [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/aromajoin-software/)
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/aromajoin-software/)
 
 **[Aroma Shooter](https://aromajoin.com/products/aroma-shooter)との通信に使用されるAromaShooterController SDKのJava版です。**  
 
@@ -31,35 +32,26 @@
 
 ## インストール
 
-### バイナリファイル（.jar)
-1. [最新のcontroller-sdk-java.jarファイル](https://github.com/aromajoin/controller-sdk-java/releases/tag/v2.4.0)をダウンロードしてください。
-2. それをプロジェクトのビルドパスに追加します。
-
-### Gradle （非推奨）
-
-1. 初めに[rootProject]/build.gradleの上にリポジトリを追加します。
-```gradle
-repositories {
-    // ... other repositories
-    maven { url "https://dl.bintray.com/aromajoin/maven/" }
-}
-```
-2. 次に`controller-sdk`依存関係を追加します。
+### Gradle
+`controller-sdk`依存関係を追加します。
 ```gradle
 dependencies {
     // ... other dependencies
-    compile 'com.aromajoin.sdk:jvm:2.x.x'
+    compile 'com.aromajoin.sdk:jvm:2.4.0'
 }
 ```
-### Maven （非推奨）
+### Maven
 ```xml
 <dependency>
   <groupId>com.aromajoin.sdk</groupId>
   <artifactId>jvm</artifactId>
-  <version>2.x.x</version>
+  <version>2.4.0</version>
   <type>pom</type>
 </dependency>
 ```
+### バイナリファイル（.jar)
+1. [最新のcontroller-sdk-java.jarファイル](https://github.com/aromajoin/controller-sdk-java/releases/tag/v2.4.0)をダウンロードしてください。
+2. それをプロジェクトのビルドパスに追加します。
 
 ## 使用法
 詳細は[サンプルプロジェクト](https://github.com/aromajoin/controller-sdk-java/tree/master/Sample)をチェックしてください。
